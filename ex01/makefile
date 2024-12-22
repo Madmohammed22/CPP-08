@@ -1,4 +1,4 @@
-SRC = main.cpp
+SRC = main.cpp Span.cpp
   
 OBJ = $(SRC:.cpp=.o)
 
@@ -6,7 +6,7 @@ CC = c++
 
 CppFLAGS =  -Wall -Wextra -Werror -g3
 
-CppVERSION = -std=c++11
+CppVERSION = -std=c++98
 
 NAME = convert
 
