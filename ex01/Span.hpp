@@ -27,6 +27,7 @@ public:
     unsigned int longestSpan();
     unsigned int shortestSpan();
     void display();
+    void addMany();
 };
 
 #endif

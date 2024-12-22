@@ -31,35 +31,38 @@ Span::~Span()
     std::cout << "[Span] Distructor is called" << std::endl;
 }
 
-void Span::addNumber(int data){
+void Span::addNumber(int data)
+{
     try
     {
-        if((this->count < this->reserve)){
+        if ((this->count < this->reserve))
+        {
             this->buffer.push_back(data);
             this->count++;
         }
-        else{
+        else
+        {
             throw std::runtime_error("[Span] is full");
         }
-        
     }
-    catch(const std::out_of_range& e)
+    catch (const std::out_of_range &e)
     {
         std::cerr << e.what() << '\n';
         _Exit(EXIT_FAILURE);
     }
-    
 }
 
-unsigned int Span::longestSpan(){
+unsigned int Span::longestSpan()
+{
     std::sort(this->buffer.begin(), this->buffer.end());
-    return this->buffer.back() - this->buffer.front(); 
-    
+    return this->buffer.back() - this->buffer.front();
 }
 
-unsigned int Span::shortestSpan(){
+unsigned int Span::shortestSpan()
+{
     std::vector<int> holder;
-    for (size_t i = 0; i < this->buffer.size() - 1; i++){
+    for (size_t i = 0; i < this->buffer.size() - 1; i++)
+    {
         if (this->buffer[i + 1] - this->buffer[i] >= 0)
             holder.push_back(this->buffer[i + 1] - this->buffer[i]);
     }
@@ -67,8 +70,20 @@ unsigned int Span::shortestSpan(){
     return holder.front();
 }
 
-void Span::display(){
-    for (size_t i = 0; i < this->buffer.size(); i++){
+void Span::display()
+{
+    for (size_t i = 0; i < this->buffer.size(); i++)
+    {
         std::cout << this->buffer[i] << std::endl;
     }
+}
+
+void Span::addMany()
+{
+    // std::vector<int>::iterator myIter = this->buffer.front();
+    // for (myIter = this->buffer.begin(); myIter != this->buffer.end(); myIter++)
+    //     this->addNumber(rand() % this->reserve + 1);
+    srand(time(NULL));
+    for (size_t i = 0; i < this->reserve; i++)
+        this->addNumber(rand() % this->reserve + 1);
 }
