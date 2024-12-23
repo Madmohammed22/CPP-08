@@ -29,7 +29,26 @@ public:
     void pop();
     T top();
     int size();
+    // iterator end();
+    public:
+        typedef typename std::deque<T>::iterator iterator;
+        iterator begin();
+        iterator end();
 };
+
+
+
+template <typename T>
+typename std::deque<T>::iterator MutantStack<T>::begin()
+{
+    return this->c.begin();
+}
+
+template <typename T>
+typename std::deque<T>::iterator MutantStack<T>::end()
+{
+    return this->c.end();
+}
 
 template <class T>
 MutantStack<T>::MutantStack() : Top(0), isEmpty(true)
@@ -95,4 +114,5 @@ T MutantStack<T>::top()
     else
         return 0;
 }
+
 #endif
