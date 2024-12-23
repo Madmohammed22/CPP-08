@@ -8,6 +8,7 @@
 #include <cstdlib>
 #include <algorithm>
 #include <vector>
+#include <deque>
 #include <bits/stdc++.h>
 
 template <class T>
@@ -41,13 +42,14 @@ public:
 template <typename T>
 typename std::deque<T>::iterator MutantStack<T>::begin()
 {
-    return this->c.begin();
+    return iterator(this->c.begin());
 }
 
 template <typename T>
 typename std::deque<T>::iterator MutantStack<T>::end()
 {
-    return this->c.end();
+    return iterator(this->c.end())
+    // return this->c.end();
 }
 
 template <class T>

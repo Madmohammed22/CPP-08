@@ -12,12 +12,16 @@ int main()
         MutantStack<int>::iterator it = mstack.begin();
         MutantStack<int>::iterator ite = mstack.end();
 
-        while (it != ite)
-        {
-            std::cout << *it << std::endl;
-            std::cout << mstack.top() << std::endl;
-            ++it;
+        std::cout << *it << "  "  << *ite << std::endl;
+        for(int it= stack.begin(); it != myStack.end(); ++it) {
+        std::cout << *it << " ";
         }
+        // while (it != ite)
+        // {
+        //     std::cout << mstack.top() << std::endl;
+        //     std::cout << *it << std::endl;
+        //     ++it;
+        // }
         // std::cout << *it << std::endl;
         // for (int i = it; i < 2; i++)
         // {
