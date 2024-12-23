@@ -21,23 +21,24 @@ public:
 
 private:
     std::stack<T> buffer;
-    unsigned int top;
+    int Top;
     bool isEmpty;
 
 public:
     void push(T t);
-    T pop();
+    void pop();
     T top();
+    int size();
 };
 
 template <class T>
-MutantStack<T>::MutantStack() : top(-1), isEmpty(true)
+MutantStack<T>::MutantStack() : Top(0), isEmpty(true)
 {
-    std::cout << "[MutantStack] Constructor is called" << std::endl;
+    // std::cout << "[MutantStack] Constructor is called" << std::endl;
 }
 
 template <class T>
-MutantStack<T>::MutantStack(const MutantStack<T> &Init) : top(Init.top), isEmpty(Init.isEmpty)
+MutantStack<T>::MutantStack(const MutantStack<T> &Init) : Top(Init.Top), isEmpty(Init.isEmpty)
 {
     (void)Init;
 }
@@ -47,13 +48,13 @@ MutantStack<T> &MutantStack<T>::operator=(const MutantStack<T> &Init)
 {
     if (this == &Init)
         return *this;
-    this->top = Init.top;
+    this->Top = Init.Top;
 }
 
 template <class T>
 MutantStack<T>::~MutantStack()
 {
-    std::cout << "[MutantStack] Distructor is called" << std::endl;
+    // std::cout << "[MutantStack] Distructor is called" << std::endl;
 }
 
 template <typename T>
@@ -62,30 +63,39 @@ void MutantStack<T>::push(T element)
     if (!isEmpty)
     {
         T LastMin = buffer.top();
-
         if (element < LastMin)
             buffer.push(element);
         else
             buffer.push(LastMin);
+        this->Top++;
     }
     else
+    {
+        this->Top++;
         buffer.push(element);
-    // this->push(element);
+    }
 }
 
 template <typename T>
-T MutantStack<T>::pop()
+void MutantStack<T>::pop()
 {
-    buffer.pop();
-    T out = this.top();
-    this.pop();
-    return out;
+    if (this->Top != 0)
+        buffer.pop();
+    this->Top--;
+}
+
+template <typename T>
+int MutantStack<T>::size()
+{
+    return this->Top;
 }
 
 template <typename T>
 T MutantStack<T>::top()
 {
-    T out = this->buffer.top();   
-    return out;
+    if (this->Top != 0)
+        return this->buffer.top();
+    else
+        return 0;
 }
 #endif
