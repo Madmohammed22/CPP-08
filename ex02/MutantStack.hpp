@@ -34,13 +34,11 @@ public:
 template <class T>
 MutantStack<T>::MutantStack() : Top(0), isEmpty(true)
 {
-    // std::cout << "[MutantStack] Constructor is called" << std::endl;
 }
 
 template <class T>
 MutantStack<T>::MutantStack(const MutantStack<T> &Init) : Top(Init.Top), isEmpty(Init.isEmpty)
 {
-    (void)Init;
 }
 
 template <class T>
@@ -54,7 +52,6 @@ MutantStack<T> &MutantStack<T>::operator=(const MutantStack<T> &Init)
 template <class T>
 MutantStack<T>::~MutantStack()
 {
-    // std::cout << "[MutantStack] Distructor is called" << std::endl;
 }
 
 template <typename T>
